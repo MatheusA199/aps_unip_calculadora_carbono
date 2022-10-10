@@ -25,7 +25,7 @@ def calculadora_carbono():
 	carbono_final = carbono_final#/ divisores
 	total_arvores = math.ceil(carbono_final/0.541)
 	print(f'{carbono_final:.3f} tCO2')
-	print(f'O total de ârvores que você deve plantar é {total_arvores}')
+	print(f'O total de árvores que você deve plantar é {total_arvores}')
 
 def transformar_anos(sheet_range):
 	quantidade_anos = int(sheet_range['C3'].value)
