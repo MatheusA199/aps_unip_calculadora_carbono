@@ -7,10 +7,12 @@ def calculadora_carbono():
 		'4' : 0.0022755}
 
 	escrever_mensagem_boas_vindas()
+	linha_vazia()
 	quantidade_carbono_primeiro_ano = 0
 	quantidade_carbono_segundo_ano = 0
 
-	resposta_primeira = str(input('Está tudo pronto para realização do calculo?(S/N) '))
+	resposta_primeira = str(input('Está tudo pronto para realização do cálculo?(S/N) '))
+	linha_vazia()
 	resposta_primeira = resposta_primeira.lower()
 
 	if resposta_primeira == 'n':
@@ -18,66 +20,70 @@ def calculadora_carbono():
 
 	elif resposta_primeira == 's':
 		print('Agora, responda com os valores referentes ao primeiro ano da comparação.')
+		linha_vazia()
 		quantidade_carbono_primeiro_ano += calculo(coeficientes)
-		print(quantidade_carbono_primeiro_ano)
-
+		linha_vazia()
 		while True:
 			try:
-				resposta_segunda = str(input('Deseja adicionar mais algum consumo nesse respectivo ano?(S/N) '))
+				resposta_segunda = str(input('Deseja adicionar mais algum consumo nesse primeiro ano?(S/N) '))
+				linha_vazia()
 				resposta_segunda = resposta_segunda.lower()
 
 				if (resposta_segunda == 's'):
 					quantidade_carbono_primeiro_ano += calculo(coeficientes)
-					print(quantidade_carbono_primeiro_ano)
 
 				elif (resposta_segunda == 'n'):
 					break
 				else:
-					print('Resposta invalida, responda com S(sim) ou N(não)')
+					print('Resposta inválida, responda com S(sim) ou N(não)')
 
 			except:
-				print('Resposta invalida, responda com S(sim) ou N(não)')
+				print('Resposta inválida, responda com S(sim) ou N(não)')
 
 
 		print('Agora, responda com os valores referentes ao segundo ano da comparação.')
 		quantidade_carbono_segundo_ano += calculo(coeficientes)
-		print(quantidade_carbono_segundo_ano)
 
 		while True:
 			try:
-				resposta_segunda = str(input('Deseja adicionar mais algum consumo nesse respectivo ano?(S/N) '))
+				resposta_segunda = str(input('Deseja adicionar mais algum consumo nesse segundo ano?(S/N) '))
+				linha_vazia()
 				resposta_segunda = resposta_segunda.lower()
 
 				if (resposta_segunda == 's'):
 					quantidade_carbono_segundo_ano += calculo(coeficientes)
-					print(quantidade_carbono_segundo_ano)
 
 				elif (resposta_segunda == 'n'):
 					break
 
 				else:
-					print('Resposta invalida, responda com S(sim) ou N(não)')
+					print('Resposta inválida, responda com S(sim) ou N(não)')
 
 			except:
-				print('Resposta invalida, responda com S(sim) ou N(não)')
-				
-
+				print('Resposta inválida, responda com S(sim) ou N(não)')
 
 		diferenca = quantidade_carbono_primeiro_ano - quantidade_carbono_segundo_ano
 
+		valor_credito_carbono = float(89.05)
+
+		valor_em_reais = (valor_credito_carbono * diferenca)
+
+
+
 		if diferenca > 0:
 			print(f'Parabéns! Você adquiriu {diferenca:0.2f} créditos de carbono.')
-
+			print(f'Com isso, você receberá {valor_em_reais:0.2f} reais na venda desses créditos! ')
 		elif diferenca == 0:
-			print(f'Seu consumo foi igual nos dois anos! Logo, você não adquiriu nenhum créditos de carbono.')
+			print(f'Seu consumo foi igual nos dois anos! Logo, você não adquiriu nenhum crédito de carbono.')
 
 		else:
-			print(f'Infelizmente, você aumento suas emissões de carbono de uma ano para o outro!')
+			print(f'Infelizmente, você aumentou suas emissões de carbono de uma ano para o outro em {diferenca:0.2f}!')
 			diferenca = abs(diferenca)
-			print(f'Portanto, você deve comprar {diferenca:0.2f} créditos de carbono para compensar seu gasto a mais.')
+			print(f'Portanto, para compensar o aumento de emissões, você deve comprar {diferenca:0.2f} créditos de carbono!')
+			print(f'Para isso, você deverá desenbolsar {valor_em_reais:0.2f} reais.')
 
 	else:
-		print('resposta inválida!')
+		print('Resposta inválida!')
 		print('Calculadora encerrada.')
 
 
@@ -90,16 +96,19 @@ def calculo(coeficientes):
 
 	while True:
 		try:
-			valor_quilometro = float(input('Digite a quantidade de quilômetros rodados por um tipo de veículo: '))
+			valor_quilometro = float(input('Digite a quantidade de quilômetros rodados por um tipo de veículo (Km): '))
+			linha_vazia()
 			break
 		except:
-			print('Resposta invalida, por favor, digite somente números!')	
-
+			print('Resposta inválida, por favor, digite somente números!')	
+			linha_vazia()
 
 	print('Tipos de combustivel: 1- Gasolina; 2 - Diesel; 3 - Eletrico; 4 - Etanol')
+	linha_vazia()
 	while True:
 		try:
 			tipo_combustivel = str(input('Digite o tipo de combustivel (1/2/3/4): '))
+			linha_vazia()
 
 			verficacao1 =  tipo_combustivel == '1'
 			verficacao2 =  tipo_combustivel == '2'
@@ -108,25 +117,32 @@ def calculo(coeficientes):
 			if verficacao1 or verficacao2 or verficacao3 or verficacao4:
 				break
 			else:
-				print('Resposta invalida, digite apenas números (1/2/3/4).')
+				print('Resposta inválida, digite apenas os números (1/2/3/4).')
 
 		except:
-			print('Resposta invalida, por favor, digite somente números!')	
+			print('Resposta inválida, por favor, digite somente números!')	
+			linha_vazia()
 
 	while True:
 		try:
-			valor_consumo_gasolina = float(input('Digite o consumo do respectivel combustivel (l/100km): '))
+			valor_consumo_gasolina = float(input('Digite o consumo do respectivel combustivel (Km/L): '))
 			break
 
 		except:
-			print('Resposta invalida, por favor, digite somente números!')	
+			print('Resposta inválida, por favor, digite somente números!')	
+			linha_vazia()
 
 
 	coeficiente = coeficientes.get(tipo_combustivel)
 
-	quantidade_carbono = valor_quilometro * (coeficiente) * (valor_consumo_gasolina / 100)
+	quantidade_carbono = (valor_quilometro / valor_consumo_gasolina) * (coeficiente) 
 
 	return quantidade_carbono
+
+def linha_vazia():
+	print('')
+
+
 
 if (__name__ ==	 '__main__'):
 	calculadora_carbono()
